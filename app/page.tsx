@@ -1,11 +1,134 @@
+'use client';
+import { useState } from 'react';
 import Image from "next/image";
+import Modal from './components/Modal';
+
+interface ProjectDetails {
+  title: string;
+  content: string;
+  image: string;
+  role: string;
+  period: string;
+  technologies: string[];
+}
 
 export default function Home() {
+  const [selectedProject, setSelectedProject] = useState<ProjectDetails | null>(null);
+
+  const projectDetails: Record<string, ProjectDetails> = {
+    'Epica Audio': {
+      title: 'Epica Audio',
+      image: '/epica.png',
+      role: 'Lead Full Stack Developer',
+      period: '2023 - Present',
+      technologies: ['TypeScript', 'React', 'Node.js', 'WebAudio API', 'AWS', 'Redis'],
+      content: `Leading the development of a cutting-edge audio processing platform at Epica Audio:
+
+• Architected and implemented real-time audio processing system
+• Developed custom WebAudio API integrations
+• Built intuitive user interface for audio manipulation
+• Optimized performance for handling large audio files
+• Implemented cloud storage and processing solutions
+
+Technologies used: React, WebAudio API, Node.js, AWS, TypeScript, Redis`
+    },
+    'Booz.cl': {
+      title: 'Booz.cl',
+      image: '/booz.png',
+      role: 'Senior Software Engineer',
+      period: '2022 - Present',
+      technologies: ['TypeScript', 'React', 'D3.js', 'Node.js', 'GraphQL', 'PostgreSQL'],
+      content: `At Booz.cl, I led the development of enterprise-scale analytics dashboards that transformed how our clients interact with their data. Key achievements include:
+
+• Architected and implemented real-time data visualization systems
+• Developed custom D3.js components for complex data representations
+• Led a team of 4 developers in delivering critical features
+• Improved dashboard performance by 60% through optimization
+• Implemented advanced filtering and search capabilities
+
+Technologies used: React, D3.js, Node.js, TypeScript, GraphQL`
+    },
+    'Boozity': {
+      title: 'Boozity',
+      image: '/boozity.png',
+      role: 'Senior Software Engineer',
+      period: '2021 - 2022',
+      technologies: ['JavaScript', 'React', 'Node.js', 'Docker', 'MongoDB', 'AWS'],
+      content: `As Senior Software Engineer at Boozity, I was responsible for:
+
+• Developing scalable web applications using modern JavaScript frameworks
+• Implementing microservices architecture
+• Leading technical architecture decisions
+• Optimizing application performance and user experience
+• Mentoring junior developers
+
+Technologies used: React, Node.js, Docker, AWS, MongoDB`
+    },
+    'Gap Inc.': {
+      title: 'Gap Inc.',
+      image: '/gap.png',
+      role: 'Full Stack Developer',
+      period: '2020 - 2021',
+      technologies: ['JavaScript', 'React', 'Redux', 'Node.js', 'PostgreSQL', 'AWS'],
+      content: `At Gap Inc., I worked on critical e-commerce features that improved the shopping experience for millions of users:
+
+• Optimized checkout flow resulting in 40% performance improvement
+• Implemented real-time inventory tracking
+• Developed mobile-first responsive features
+• Integrated multiple payment gateways
+• Enhanced security protocols for payment processing
+
+Technologies used: React, Node.js, Redux, PostgreSQL, AWS`
+    },
+    'Minted': {
+      title: 'Minted',
+      image: '/minted.png',
+      role: 'Frontend Developer',
+      period: '2019 - 2020',
+      technologies: ['JavaScript', 'React', 'Canvas API', 'WebGL', 'Node.js', 'AWS'],
+      content: `At Minted, I built interactive design tools that empowered creators:
+
+• Developed real-time design preview functionality
+• Implemented complex Canvas API interactions
+• Created responsive design editor interface
+• Optimized image processing and rendering
+• Integrated with cloud storage solutions
+
+Technologies used: React, Canvas API, WebGL, Node.js, AWS S3`
+    },
+    'Nisum Latam': {
+      title: 'Nisum Latam',
+      image: '/nisum.png',
+      role: 'Software Engineer',
+      period: '2018 - 2019',
+      technologies: ['JavaScript', 'React', 'GraphQL', 'Node.js', 'PostgreSQL', 'Redis'],
+      content: `At Nisum Latam, I contributed to inventory management solutions:
+
+• Built GraphQL API for inventory tracking
+• Implemented real-time updates using WebSocket
+• Developed automated reporting system
+• Created dashboard for inventory analytics
+• Integrated with multiple third-party services
+
+Technologies used: React, GraphQL, Node.js, PostgreSQL, Redis`
+    }
+  };
+
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-mono)]">
-      <header className="flex flex-col items-center sm:items-start gap-4">
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Ignacio Palma</h1>
-        <h2 className="text-lg sm:text-xl text-gray-600 dark:text-gray-300">Full Stack Web Developer</h2>
+      <header className="flex flex-col sm:flex-row items-center gap-6">
+        <Image
+          src="/avatar.png"
+          alt="Ignacio Palma"
+          width={100}
+          height={100}
+          className="rounded-full border-2 border-gray-200 dark:border-gray-700"
+          priority
+        />
+        <div className="flex flex-col items-center sm:items-start gap-2">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Ignacio Palma</h1>
+          <h2 className="text-lg sm:text-xl text-gray-600 dark:text-gray-300">Full Stack Web Developer</h2>
+        </div>
       </header>
 
       <main className="flex flex-col gap-12">
@@ -24,165 +147,51 @@ export default function Home() {
         <section className="space-y-6">
           <h3 className="text-xl font-semibold tracking-tight">Featured Projects</h3>
           <div className="flex flex-col gap-8">
-            {/* Booz.cl Project */}
-            <div className="flex flex-col sm:flex-row gap-6 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <div className="sm:w-1/3">
-                <Image
-                  src="/booz.png"
-                  alt="Booz Allen Hamilton project"
-                  width={400}
-                  height={300}
-                  className="rounded-lg object-contain w-full h-[200px] bg-gray-50 dark:bg-gray-900 p-4"
-                />
-              </div>
-              <div className="sm:w-2/3 space-y-2">
-                <h4 className="text-lg font-semibold tracking-tight">Booz.cl</h4>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Senior Software Engineer</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">2022 - Present</p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Led development of enterprise-scale analytics dashboard using React and D3.js.
-                  Implemented real-time data visualization and advanced filtering capabilities.
-                </p>
-                <div className="flex gap-4 text-xs">
-                  <a 
-                    href="#" 
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    $ view_more →
-                  </a>
+            {Object.entries(projectDetails).map(([name, details]) => (
+              <div 
+                key={name} 
+                className="flex flex-col sm:flex-row gap-6 border border-gray-200 dark:border-gray-700 rounded-lg p-6 
+                  transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg 
+                  dark:hover:shadow-gray-700/25"
+              >
+                <div className="sm:w-1/3">
+                  <Image
+                    src={details.image}
+                    alt={`${name} project`}
+                    width={400}
+                    height={300}
+                    className="rounded-lg object-contain w-full h-[200px] bg-gray-50 dark:bg-gray-900 p-4"
+                  />
+                </div>
+                <div className="sm:w-2/3 space-y-2">
+                  <h4 className="text-lg font-semibold tracking-tight">{name}</h4>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{details.role}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{details.period}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {details.content.split('\n\n')[0]}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {details.technologies.map((tech) => (
+                      <span 
+                        key={tech}
+                        className="px-2 py-1 text-xs rounded-full bg-gray-100 dark:bg-gray-700 
+                          text-gray-700 dark:text-gray-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex gap-4 text-xs">
+                    <button 
+                      onClick={() => setSelectedProject(details)}
+                      className="text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
+                    >
+                      $ view_more →
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* Boozity Project */}
-            <div className="flex flex-col sm:flex-row gap-6 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <div className="sm:w-1/3">
-                <Image
-                  src="/boozity.png"
-                  alt="Boozity project"
-                  width={400}
-                  height={300}
-                  className="rounded-lg object-contain w-full h-[200px] bg-gray-50 dark:bg-gray-900 p-4"
-                />
-              </div>
-              <div className="sm:w-2/3 space-y-2">
-                <h4 className="text-lg font-semibold tracking-tight">Boozity</h4>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Senior Software Engineer</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">2021 - 2022</p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Led development of modern web applications using React and Node.js.
-                  Implemented scalable architecture and optimized performance.
-                </p>
-                <div className="flex gap-4 text-xs">
-                  <a 
-                    href="#" 
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    $ view_more →
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* GAP Project */}
-            <div className="flex flex-col sm:flex-row gap-6 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <div className="sm:w-1/3">
-                <Image
-                  src="/gap.png"
-                  alt="GAP project"
-                  width={400}
-                  height={300}
-                  className="rounded-lg object-contain w-full h-[200px] bg-gray-50 dark:bg-gray-900 p-4"
-                />
-              </div>
-              <div className="sm:w-2/3 space-y-2">
-                <h4 className="text-lg font-semibold tracking-tight">Gap Inc.</h4>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Full Stack Developer</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">2020 - 2022</p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Developed and maintained critical e-commerce features using React and Node.js.
-                  Improved checkout flow performance by 40% through optimization.
-                </p>
-                <div className="flex gap-4 text-xs">
-                  <a 
-                    href="#" 
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    $ view_more →
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Minted Project */}
-            <div className="flex flex-col sm:flex-row gap-6 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <div className="sm:w-1/3">
-                <Image
-                  src="/minted.png"
-                  alt="Minted project"
-                  width={400}
-                  height={300}
-                  className="rounded-lg object-contain w-full h-[200px] bg-gray-50 dark:bg-gray-900 p-4"
-                />
-              </div>
-              <div className="sm:w-2/3 space-y-2">
-                <h4 className="text-lg font-semibold tracking-tight">Minted</h4>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Frontend Developer</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">2019 - 2020</p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Built interactive design customization tool using React and Canvas API.
-                  Implemented real-time preview and advanced editing capabilities.
-                </p>
-                <div className="flex gap-4 text-xs">
-                  <a 
-                    href="#" 
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    $ view_more →
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Nisum Project */}
-            <div className="flex flex-col sm:flex-row gap-6 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-              <div className="sm:w-1/3">
-                <Image
-                  src="/nisum.png"
-                  alt="Nisum project"
-                  width={400}
-                  height={300}
-                  className="rounded-lg object-contain w-full h-[200px] bg-gray-50 dark:bg-gray-900 p-4"
-                />
-              </div>
-              <div className="sm:w-2/3 space-y-2">
-                <h4 className="text-lg font-semibold tracking-tight">Nisum Latam</h4>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Software Engineer</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">2018 - 2020</p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Developed inventory tracking system using React and GraphQL.
-                  Implemented real-time updates and automated reporting features.
-                </p>
-                <div className="flex gap-4 text-xs">
-                  <a 
-                    href="#" 
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    $ view_more →
-                  </a>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
@@ -213,6 +222,17 @@ export default function Home() {
       <footer className="text-center text-xs text-gray-600 dark:text-gray-400">
         <p>© {new Date().getFullYear()} Ignacio Palma. All rights reserved.</p>
       </footer>
+
+      <Modal
+        isOpen={!!selectedProject}
+        onClose={() => setSelectedProject(null)}
+        title={selectedProject?.title || ''}
+        image={selectedProject?.image || ''}
+      >
+        <div className="whitespace-pre-line text-sm">
+          {selectedProject?.content}
+        </div>
+      </Modal>
     </div>
   );
 }
