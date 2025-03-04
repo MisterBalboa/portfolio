@@ -2,99 +2,216 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-mono)]">
+      <header className="flex flex-col items-center sm:items-start gap-4">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Ignacio Palma</h1>
+        <h2 className="text-lg sm:text-xl text-gray-600 dark:text-gray-300">Full Stack Web Developer</h2>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+      <main className="flex flex-col gap-12">
+        {/* About Section */}
+        <section className="space-y-4">
+          <h3 className="text-xl font-semibold tracking-tight">About Me</h3>
+          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+            I'm a passionate web developer with expertise in modern web technologies.
+            I specialize in building responsive, user-friendly applications using
+            React, Next.js, and Node.js. With a keen eye for detail and a love for
+            clean code, I transform ideas into elegant digital solutions.
+          </p>
+        </section>
+
+        {/* Projects Section */}
+        <section className="space-y-6">
+          <h3 className="text-xl font-semibold tracking-tight">Featured Projects</h3>
+          <div className="flex flex-col gap-8">
+            {/* Booz.cl Project */}
+            <div className="flex flex-col sm:flex-row gap-6 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+              <div className="sm:w-1/3">
+                <Image
+                  src="/booz.png"
+                  alt="Booz Allen Hamilton project"
+                  width={400}
+                  height={300}
+                  className="rounded-lg object-contain w-full h-[200px] bg-gray-50 dark:bg-gray-900 p-4"
+                />
+              </div>
+              <div className="sm:w-2/3 space-y-2">
+                <h4 className="text-lg font-semibold tracking-tight">Booz.cl</h4>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Senior Software Engineer</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">2022 - Present</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  Led development of enterprise-scale analytics dashboard using React and D3.js.
+                  Implemented real-time data visualization and advanced filtering capabilities.
+                </p>
+                <div className="flex gap-4 text-xs">
+                  <a 
+                    href="#" 
+                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    $ view_more →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Boozity Project */}
+            <div className="flex flex-col sm:flex-row gap-6 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+              <div className="sm:w-1/3">
+                <Image
+                  src="/boozity.png"
+                  alt="Boozity project"
+                  width={400}
+                  height={300}
+                  className="rounded-lg object-contain w-full h-[200px] bg-gray-50 dark:bg-gray-900 p-4"
+                />
+              </div>
+              <div className="sm:w-2/3 space-y-2">
+                <h4 className="text-lg font-semibold tracking-tight">Boozity</h4>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Senior Software Engineer</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">2021 - 2022</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  Led development of modern web applications using React and Node.js.
+                  Implemented scalable architecture and optimized performance.
+                </p>
+                <div className="flex gap-4 text-xs">
+                  <a 
+                    href="#" 
+                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    $ view_more →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* GAP Project */}
+            <div className="flex flex-col sm:flex-row gap-6 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+              <div className="sm:w-1/3">
+                <Image
+                  src="/gap.png"
+                  alt="GAP project"
+                  width={400}
+                  height={300}
+                  className="rounded-lg object-contain w-full h-[200px] bg-gray-50 dark:bg-gray-900 p-4"
+                />
+              </div>
+              <div className="sm:w-2/3 space-y-2">
+                <h4 className="text-lg font-semibold tracking-tight">Gap Inc.</h4>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Full Stack Developer</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">2020 - 2022</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  Developed and maintained critical e-commerce features using React and Node.js.
+                  Improved checkout flow performance by 40% through optimization.
+                </p>
+                <div className="flex gap-4 text-xs">
+                  <a 
+                    href="#" 
+                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    $ view_more →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Minted Project */}
+            <div className="flex flex-col sm:flex-row gap-6 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+              <div className="sm:w-1/3">
+                <Image
+                  src="/minted.png"
+                  alt="Minted project"
+                  width={400}
+                  height={300}
+                  className="rounded-lg object-contain w-full h-[200px] bg-gray-50 dark:bg-gray-900 p-4"
+                />
+              </div>
+              <div className="sm:w-2/3 space-y-2">
+                <h4 className="text-lg font-semibold tracking-tight">Minted</h4>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Frontend Developer</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">2019 - 2020</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  Built interactive design customization tool using React and Canvas API.
+                  Implemented real-time preview and advanced editing capabilities.
+                </p>
+                <div className="flex gap-4 text-xs">
+                  <a 
+                    href="#" 
+                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    $ view_more →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Nisum Project */}
+            <div className="flex flex-col sm:flex-row gap-6 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+              <div className="sm:w-1/3">
+                <Image
+                  src="/nisum.png"
+                  alt="Nisum project"
+                  width={400}
+                  height={300}
+                  className="rounded-lg object-contain w-full h-[200px] bg-gray-50 dark:bg-gray-900 p-4"
+                />
+              </div>
+              <div className="sm:w-2/3 space-y-2">
+                <h4 className="text-lg font-semibold tracking-tight">Nisum Latam</h4>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Software Engineer</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">2018 - 2020</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  Developed inventory tracking system using React and GraphQL.
+                  Implemented real-time updates and automated reporting features.
+                </p>
+                <div className="flex gap-4 text-xs">
+                  <a 
+                    href="#" 
+                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    $ view_more →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section className="space-y-4">
+          <h3 className="text-xl font-semibold tracking-tight">Get In Touch</h3>
+          <div className="flex gap-4">
+            <a
+              href="https://github.com/ignaciopalma"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors text-sm"
+            >
+              $ github
+            </a>
+            <a
+              href="https://linkedin.com/in/ignaciopalma"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-colors text-sm"
+            >
+              $ linkedin
+            </a>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      <footer className="text-center text-xs text-gray-600 dark:text-gray-400">
+        <p>© {new Date().getFullYear()} Ignacio Palma. All rights reserved.</p>
       </footer>
     </div>
   );
